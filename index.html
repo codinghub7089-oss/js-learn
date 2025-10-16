@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>clock</title>
+</head>
+<style>
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c35;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+  }
+  .clock-container{
+    text-align: center;
+    font-size: 50px;
+    border: 2px solid burlywood;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+
+  }
+</style>
+<body>
+<div class="clock-container">
+  <div class="clock">00:00:00</div>
+</div>
+<audio src="tik tik.mp3" preload="auto"></audio>
+<script>
+  const element = document.querySelector('.clock');
+  const time  = new Date();
+  const options = {
+    timeZone: 'Asia/Kolkata',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+
+  
+  }
+  element.textContent = time.toLocaleTimeString('en-US', options);
+  setInterval(()=>{
+    const time  = new Date();
+    element.textContent = time.toLocaleTimeString('en-US', options);
+    const audio = document.querySelector('audio');
+    audio.play();
+  })
+  
+  
+</script>
+</body>
+</html>
